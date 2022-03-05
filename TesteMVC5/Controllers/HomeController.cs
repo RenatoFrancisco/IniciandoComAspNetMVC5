@@ -26,5 +26,43 @@ namespace TesteMVC5.Controllers
 
             return View();
         }
+
+        public ContentResult ContentResult()
+        {
+            return Content("Hello!");
+        }
+
+        public FileContentResult FileContentResult()
+        {
+            var foto = System.IO.File.ReadAllBytes(Server.MapPath("/Content/images/capa.png"));
+
+            return File(foto, "image/png", "capa.png");
+        }
+
+        public HttpUnauthorizedResult HttpUnauthorizedResult()
+        {
+            return new HttpUnauthorizedResult();
+        }
+
+        public JsonResult JsonResult()
+        {
+            return Json("nome: 'Renato'", JsonRequestBehavior.AllowGet);
+        }
+
+        public RedirectResult RedirectResult()
+        {
+            return new RedirectResult("https://desenvolvedor.io");
+        }
+
+        public RedirectToRouteResult RedirectToRouteResult()
+        {
+            //return RedirectToRoute(new
+            //{
+            //    controller = "Home",
+            //    Action = "Index"
+            //});
+
+            return RedirectToAction("IndexTeste", "Teste");
+        }
     }
 }

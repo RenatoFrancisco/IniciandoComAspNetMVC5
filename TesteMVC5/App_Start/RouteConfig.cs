@@ -13,6 +13,9 @@ namespace TesteMVC5
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Para usar rotas com annotations
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

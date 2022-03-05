@@ -13,6 +13,7 @@ namespace TesteMVC5.Controllers
             return View();
         }
 
+        [Route("sobre-nos")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -20,6 +21,7 @@ namespace TesteMVC5.Controllers
             return View();
         }
 
+        [Route("institucional/entre-em-contato")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

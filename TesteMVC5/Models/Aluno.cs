@@ -5,10 +5,12 @@ namespace TesteMVC5.Models
 {
     public class Aluno
     {
+        [Key]
         public int Id { get; set; }
 
         [Display(Name = "Nome Completo")]
         [Required(ErrorMessage = "O campo {0} é requerido")]
+        [MaxLength(100, ErrorMessage = "No máximo 100 caracteres")]
         public string Nome { get; set; }
 
         [Display(Name = "E-mail")]

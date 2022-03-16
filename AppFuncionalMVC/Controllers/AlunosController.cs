@@ -1,4 +1,5 @@
 ﻿using AppFuncionalMVC.Models;
+using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -37,10 +38,11 @@ namespace AppFuncionalMVC.Controllers
         [HttpPost]
         [Route("novo-aluno")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Nome,Email,CPF,DataMatricula,Ativo")] Aluno aluno)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Nome,Email,CPF,Ativo")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
+                aluno.DataMatricula = DateTime.Now;
                 _context.Alunos.Add(aluno);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -63,11 +65,12 @@ namespace AppFuncionalMVC.Controllers
         [HttpPost]
         [Route("editar-aluno/{id:int}")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Nome,Email,CPF,DataMatricula,Ativo")] Aluno aluno)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Nome,Email,CPF,Ativo")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
                 _context.Entry(aluno).State = EntityState.Modified;
+                _context.Entry(aluno).Property(a => a.DataMatricula).IsModified = false;
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

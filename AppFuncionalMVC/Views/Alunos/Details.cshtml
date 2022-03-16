@@ -1,13 +1,13 @@
 ﻿@model AppFuncionalMVC.Models.Aluno
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes do Aluno";
 }
 
-<h2>Details</h2>
+<h2>Detalhes do Aluno</h2>
 
 <div>
-    <h4>Aluno</h4>
+    <h4>Detalhes do aluno @Model.Nome</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -53,6 +53,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", "Alunos", new { id = Model.Id})" class="btn btn-warning">Editar</a>
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
 </p>

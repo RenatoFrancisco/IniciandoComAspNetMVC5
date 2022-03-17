@@ -6,11 +6,14 @@ using System.Web.Mvc;
 
 namespace AppFuncionalMVC.Controllers
 {
+    [Authorize]
     public class AlunosController : Controller
     {
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
         [HttpGet]
+        [AllowAnonymous]
+        [OutputCache(Duration = 60)]
         [Route("listar-alunos")]
         public async Task<ActionResult> Index()
         {

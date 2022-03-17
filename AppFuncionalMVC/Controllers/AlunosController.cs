@@ -45,6 +45,9 @@ namespace AppFuncionalMVC.Controllers
                 aluno.DataMatricula = DateTime.Now;
                 _context.Alunos.Add(aluno);
                 await _context.SaveChangesAsync();
+
+                TempData["Mensagem"] = "Aluno cadastrado com sucesso!";
+
                 return RedirectToAction("Index");
             }
 
